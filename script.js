@@ -42,6 +42,7 @@ function form1Event(e) {
     addingrows(transactionData)
     addbtn.innerHTML = `+Add Transaction`
     saveToLocal()
+    pieData(transactionData)
   } else {
     //updating counters-------- 
     updateCounters(f1data)
@@ -116,6 +117,7 @@ function tableUpdate(e) {
     recalculateCounters()
     addingrows(transactionData)
     saveToLocal()
+    pieData(transactionData)
 
   } else if (clicked.classList.contains("editbtn") || clicked.classList.contains("el")) {
     // console.log("edit:",e.target)
@@ -129,8 +131,7 @@ function tableUpdate(e) {
     form1.CATEGORY.value = dataToEdit.Category
     addbtn.innerHTML = `Edit`
     form1.scrollIntoView({ behavior: "smooth", block: "start" })
-    
-
+    pieData(transactionData)
   }
   pieData(transactionData)
 }
