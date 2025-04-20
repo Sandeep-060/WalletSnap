@@ -32,8 +32,6 @@ WalletSnap has a clean, modern interface with a focus on usability:
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- Font Awesome for icons
-- Google Fonts (Poppins, Inter)
 - Chart.js for analytics visualization
 
 ---
