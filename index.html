@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WalletSnap</title>
+  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="assets/logo-removebg-preview.png" type="image/png">
+
+  <script src="https://kit.fontawesome.com/ee81269c33.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="darkmode">
+      <button class="toggle-dark">🌙</button>
+    </div>
+    <div class="title">
+      <img class="logo" src="assets/logo-removebg-preview.png" alt="">
+      <h3>WalletSnap </h3>
+    </div>
+    <div class="amount-section">
+      <div id="income" class="amo">
+        <p class="amount">Total Income <i class="fa-solid fa-money-bill-wave" style="color: #27ae60;"></i></p>
+        <p class="amount-digits" id="userincome">0</p>
+      </div>
+      <div id="expense" class="amo">
+        <p class="amount">Total Expenses <i class="fa-solid fa-arrow-trend-down" style="color: #e74c3c;"></i></p>
+        <p class="amount-digits" id="userexpense">0</p>
+      </div>
+      <div id="balance" class="amo">
+        <p class="amount">Balance <i class="fa-solid fa-wallet" style="color: #2980b9;"></i></p>
+        <p class="amount-digits" id="userbalance">0</p>
+      </div>
+    </div>
+    <div class="transaction">
+      <h3>Add New Transaction</h3>
+      <form action="" id="form1">
+        <div class="transaction-form">
+          <div class="inputdiv">
+            <div class="label">
+              <label for="type">Type <i class="fa-solid fa-money-bill-wave" style="color: #27ae60;"></i> \ <i
+                  class="fa-solid fa-arrow-trend-down" style="color: #e74c3c;"></i></label>
+            </div>
+            <div class="inputbox">
+              <select name="TYPE" id="type" required>
+                <option value="income">income</option>
+                <option value="expenses">expenses</option>
+              </select>
+            </div>
+          </div>
+          <div class="inputdiv">
+            <div class="label">
+              <label for="description">Description <i class="fa-solid fa-clipboard" style="color: #00b894;"></i></label>
+            </div>
+            <div class="inputbox">
+              <input type="text" name="DESCRIPTION" id="description" placeholder="Describe" required />
+            </div>
+          </div>
+          <div class="inputdiv">
+            <div class="label">
+              <label for="amount">Amount <i class="fa-solid fa-dollar-sign" style="color: #00b894;"></i></label>
+            </div>
+            <div class="inputbox">
+              <input type="number" name="AMOUNT" id="amount" min="0" placeholder="Enter Amount" required />
+            </div>
+          </div>
+          <div class="inputdiv">
+            <div class="label">
+              <label for="date">Date <i class="fa-solid fa-calendar-days" style="color: #00b894;"></i></label>
+            </div>
+            <div class="inputbox">
+              <input type="date" name="DATE" id="date" required />
+            </div>
+          </div>
+          <div class="inputdiv">
+            <div class="label">
+              <label for="category">Category <i class="fa-solid fa-tags" style="color: #00b894;"></i></label>
+            </div>
+            <div class="inputbox">
+              <select name="CATEGORY" id="category" required>
+                <option value="" disabled selected>Select Category</option>
+                <optgroup label="income.">
+                  <option value="Salary">Salary</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Investment">Investment</option>
+                  <option value="Other income">Other income</option>
+                </optgroup>
+                <optgroup label="expenses.">
+                  <option value="Food & Dining">Food & Dining</option>
+                  <option value="Transportation">Transportation</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Bills & Utilities">Bills & Utilities</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Health">Health</option>
+                  <option value="Other Expenses">Other Expenses</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="add">
+          <button type="submit" id="addbtn">+Add Transaction</button>
+        </div>
+      </form>
+    </div>
+    <div class="transaction-details">
+      <h3>Transactions <i class="fa-solid fa-magnifying-glass"></i></h3>
+      <form action="">
+        <div class="transaction-form-details">
+          <div class="inputdiv">
+            <div class="label">
+              <label for="filter-type">Filter By Type</label>
+            </div>
+            <div class="inputbox">
+              <select name="TYPE" id="filter-type" required>
+                <option value="all">All</option>
+                <option value="income">Income</option>
+                <option value="expense">Expenses</option>
+              </select>
+            </div>
+          </div>
+          <div class="inputdiv">
+            <div class="label">
+              <label for="sort">Sort By </label>
+            </div>
+            <div class="inputbox">
+              <select name="CATEGORY" id="sort" required>
+                <option value="" disabled selected>Select Category</option>
+                <option value="Date(Newest)">Date(Newest)</option>
+                <option value="Date(Oldest)">Date(Oldest)</option>
+                <option value="Amount(Highest)">Amount(Highest)</option>
+                <option value="Amount(Lowest)">Amount(Lowest)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="transaction-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tablebody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="analytics">
+      <h2>Analytics <i class="fa-solid fa-chart-line" style="color: #00b894;"></i></h2>
+      <div class="analysis">
+        <div class="pie-analysis">
+          <canvas id="piechart" width="500" height="500"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="important-btns">
+      <div class="data-btn">
+        <button class="export">Export CSV <i class="fa-solid fa-file-export" style="color: #2c3e50;"></i></button>
+      </div>
+      <div class="reset">
+        <button class="reset-btn">Reset <i class="fa-solid fa-rotate-right" style="color: white;"></i></button>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
