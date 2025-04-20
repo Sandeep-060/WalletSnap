@@ -237,13 +237,24 @@ function pieData(transactionData) {
 function chartData(incomeData,expenseData){
   const labels=[...Object.keys(incomeData),...Object.keys(expenseData)]
   const data=[...Object.values(incomeData),...Object.values(expenseData)]
+  const greenShades = ['#4caf50', '#66bb6a', '#81c784', '#a5d6a7']
+  const redShades = ['#f44336', '#e57373', '#ff8a65', '#ffb74d', '#ffd54f', '#ff7043', '#ff5252']
 
-  const backgroundColors = [
-    // Income colors->green
-    '#4caf50', '#66bb6a', '#81c784', '#a5d6a7',
-    // Expense colors->red
-    '#f44336', '#e57373', '#ff8a65', '#ffb74d', '#ffd54f', '#ff7043', '#ff5252'
-  ]
+  const backgroundColors = []
+
+  labels.forEach(label => {
+    if (incomeCategories.includes(label)) {
+      const index = incomeCategories.indexOf(label) % greenShades.length
+      backgroundColors.push(greenShades[index])
+    } else if (expenseCategories.includes(label)) {
+      const index = expenseCategories.indexOf(label) % redShades.length
+      backgroundColors.push(redShades[index])
+    } else {
+      backgroundColors.push('#9e9e9e') // fallback
+    }
+  })
+  
+
   return {
     labels,
     datasets: [{
