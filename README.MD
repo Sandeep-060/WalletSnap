@@ -38,6 +38,8 @@ WalletSnap has a clean, modern interface with a focus on usability:
 
 ---
 
+🔗 **Live Demo**: [wallet-snap.vercel.app](https://wallet-snap.vercel.app/)
+
 
 
 
